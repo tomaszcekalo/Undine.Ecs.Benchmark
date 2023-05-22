@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+    <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.5" />
+    <PackageReference Include="Undine.Audrey" Version="1.0.0" />
+    <PackageReference Include="Undine.DefaultEcs" Version="1.0.1" />
+    <PackageReference Include="Undine.Entitas" Version="1.0.2" />
+    <PackageReference Include="Undine.LazyECS" Version="1.0.4" />
+    <PackageReference Include="Undine.LeopotamEcs" Version="0.0.0.3" />
+    <PackageReference Include="Undine.LeopotamEcsLite" Version="1.0.0" />
+    <PackageReference Include="Undine.MinEcs" Version="1.0.1" />
+    <PackageReference Include="Undine.MonoGame.Extended.Entities" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
