@@ -14,6 +14,8 @@ using Undine.Entitas;
 using Undine.LazyECS;
 using Undine.LeopotamEcs;
 using Undine.MinEcs;
+using Undine.MonoGame;
+using Undine.Simplecs;
 
 namespace Undine.Benchmark
 {
@@ -28,7 +30,11 @@ namespace Undine.Benchmark
         private AudreyContainer _audreyContainer;
         private LazyEcsContainer _lazyEcsContainer;
         private LeopotamEcsLite.LeopotamEcsContainer _leopotamEcsLiteContainer;
-        private Undine.MonoGame.Extended.Entities.MGEContainer _MGEEContainer;
+        private MonoGame.Extended.Entities.MGEContainer _MGEEContainer;
+        private SimplecsContainer _simpleEcsContainer;
+
+        private int _amountOfEntities = 12345;
+        private int _amountOfComponents = 12345;
 
         [GlobalSetup]
         public void Setup()
@@ -50,18 +56,23 @@ namespace Undine.Benchmark
             _leopotamEcsLiteContainer = new LeopotamEcsLite.LeopotamEcsContainer();
             AddSystems(_leopotamEcsLiteContainer);
             _leopotamEcsLiteContainer.Init();
-            _MGEEContainer = new MonoGame.Extended.Entities.MGEContainer();
+            _MGEEContainer = new MonoGame.Extended.Entities.MGEContainer()
+            {
+                GameTimeProvider = new GameTimeProvider()
+            };
             AddSystems(_MGEEContainer);
             _MGEEContainer.Init();
+            _simpleEcsContainer = new SimplecsContainer();
+            AddSystems(_simpleEcsContainer);
 
-            for (int i = 0; i < 123; i++)
+            for (int i = 0; i < _amountOfEntities; i++)
             {
                 var leopotamEntity = _leopotamEcsContainer.CreateNewEntity();
                 AddComponents(leopotamEntity);
                 var defaultEntity = _defaultEcsContainer.CreateNewEntity();
                 AddComponents(defaultEntity);
-                //var minEntity = _minEcsContainer.CreateNewEntity();
-                //AddComponents(minEntity);
+                var minEntity = _minEcsContainer.CreateNewEntity();
+                AddComponents(minEntity);
                 var entitasEntity = _entitasContainer.CreateNewEntity();
                 AddComponents(entitasEntity);
                 var audreyEntity = _audreyContainer.CreateNewEntity();
@@ -72,6 +83,8 @@ namespace Undine.Benchmark
                 AddComponents(leopotamEcsLiteEntity);
                 var mgeeEntity = _MGEEContainer.CreateNewEntity();
                 AddComponents(mgeeEntity);
+                var simplecsEntity = _simpleEcsContainer.CreateNewEntity();
+                AddComponents(simplecsEntity);
             }
         }
 
@@ -130,9 +143,15 @@ namespace Undine.Benchmark
             Scenario1(_defaultEcsContainer);
         }
 
+        [Benchmark]
+        public void Simplecs()
+        {
+            Scenario1(_simpleEcsContainer);
+        }
+
         public void Scenario1(EcsContainer container)
         {
-            for (int i = 0; i < 111111; i++)
+            for (int i = 0; i < _amountOfComponents; i++)
             {
                 container.Run();
             }
