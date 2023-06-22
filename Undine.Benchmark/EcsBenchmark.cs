@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 using Undine.Audrey;
 using Undine.Benchmark.Components;
@@ -33,8 +28,8 @@ namespace Undine.Benchmark
         private MonoGame.Extended.Entities.MGEContainer _MGEEContainer;
         private SimplecsContainer _simpleEcsContainer;
 
-        private int _amountOfEntities = 12345;
-        private int _amountOfComponents = 12345;
+        private int _amountOfEntities = 1024;
+        private int _amountOfIterations = 1024;
 
         [GlobalSetup]
         public void Setup()
@@ -151,7 +146,7 @@ namespace Undine.Benchmark
 
         public void Scenario1(EcsContainer container)
         {
-            for (int i = 0; i < _amountOfComponents; i++)
+            for (int i = 0; i < _amountOfIterations; i++)
             {
                 container.Run();
             }
