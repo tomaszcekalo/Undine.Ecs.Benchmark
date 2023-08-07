@@ -11,7 +11,7 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.13.7" />
     <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.7" />
     <PackageReference Include="Undine.Audrey" Version="1.0.1" />
-    <PackageReference Include="Undine.DefaultEcs" Version="1.0.2" />
+    <PackageReference Include="Undine.DefaultEcs" Version="1.0.3" />
     <PackageReference Include="Undine.Entitas" Version="1.0.2" />
     <PackageReference Include="Undine.LazyECS" Version="1.0.4" />
     <PackageReference Include="Undine.LeopotamEcs" Version="0.0.0.4" />
