@@ -8,6 +8,7 @@ using Undine.DefaultEcs;
 using Undine.Entitas;
 using Undine.LazyECS;
 using Undine.LeopotamEcs;
+using Undine.LeopotamEcsLite;
 using Undine.MinEcs;
 using Undine.MonoGame;
 using Undine.Simplecs;
@@ -24,7 +25,7 @@ namespace Undine.Benchmark
         private EntitasContainer _entitasContainer;
         private AudreyContainer _audreyContainer;
         private LazyEcsContainer _lazyEcsContainer;
-        private LeopotamEcsLite.LeopotamEcsContainer _leopotamEcsLiteContainer;
+        private LeopotamEcsLiteContainer _leopotamEcsLiteContainer;
         private MonoGame.Extended.Entities.MGEContainer _MGEEContainer;
         private SimplecsContainer _simpleEcsContainer;
 
@@ -48,7 +49,7 @@ namespace Undine.Benchmark
             _lazyEcsContainer = new LazyEcsContainer();
             AddSystems(_lazyEcsContainer);
             _lazyEcsContainer.Init();
-            _leopotamEcsLiteContainer = new LeopotamEcsLite.LeopotamEcsContainer();
+            _leopotamEcsLiteContainer = new LeopotamEcsLiteContainer();
             AddSystems(_leopotamEcsLiteContainer);
             _leopotamEcsLiteContainer.Init();
             _MGEEContainer = new MonoGame.Extended.Entities.MGEContainer()
