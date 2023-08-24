@@ -17,7 +17,7 @@
     <PackageReference Include="Undine.LeopotamEcs" Version="0.0.0.6" />
     <PackageReference Include="Undine.LeopotamEcsLite" Version="1.0.2" />
     <PackageReference Include="Undine.MinEcs" Version="1.0.3" />
-    <PackageReference Include="Undine.MonoGame.Extended.Entities" Version="1.0.0" />
+    <PackageReference Include="Undine.MonoGame.Extended.Entities" Version="1.0.1" />
     <PackageReference Include="Undine.Simplecs" Version="1.0.5" />
   </ItemGroup>
 
