@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.7" />
-    <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.7" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.8" />
+    <PackageReference Include="BenchmarkDotNet.Annotations" Version="0.13.8" />
     <PackageReference Include="Undine.Audrey" Version="1.0.1" />
     <PackageReference Include="Undine.DefaultEcs" Version="1.0.3" />
     <PackageReference Include="Undine.Entitas" Version="1.0.2" />
