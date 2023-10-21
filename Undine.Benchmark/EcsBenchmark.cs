@@ -11,6 +11,8 @@ using Undine.LeopotamEcs;
 using Undine.LeopotamEcsLite;
 using Undine.MinEcs;
 using Undine.MonoGame;
+
+//using Undine.Primal;
 using Undine.Simplecs;
 
 namespace Undine.Benchmark
@@ -29,7 +31,9 @@ namespace Undine.Benchmark
         private MonoGame.Extended.Entities.MGEContainer _MGEEContainer;
         private SimplecsContainer _simpleEcsContainer;
 
+        //private PrimalContainer _primalContainer;
         private int _amountOfEntities = 1024;
+
         private int _amountOfIterations = 1024;
 
         [GlobalSetup]
@@ -60,6 +64,8 @@ namespace Undine.Benchmark
             _MGEEContainer.Init();
             _simpleEcsContainer = new SimplecsContainer();
             AddSystems(_simpleEcsContainer);
+            //_primalContainer = new PrimalContainer();
+            //AddSystems(_primalContainer);
 
             for (int i = 0; i < _amountOfEntities; i++)
             {
@@ -81,6 +87,8 @@ namespace Undine.Benchmark
                 AddComponents(mgeeEntity);
                 var simplecsEntity = _simpleEcsContainer.CreateNewEntity();
                 AddComponents(simplecsEntity);
+                //var primalEntity = _primalContainer.CreateNewEntity();
+                //AddComponents(primalEntity);
             }
         }
 
@@ -144,6 +152,24 @@ namespace Undine.Benchmark
         {
             Scenario1(_simpleEcsContainer);
         }
+
+        [Benchmark]
+        public void Audrey()
+        {
+            Scenario1(_audreyContainer);
+        }
+
+        [Benchmark]
+        public void LeopotamEcsLite()
+        {
+            Scenario1(_leopotamEcsLiteContainer);
+        }
+
+        //[Benchmark]
+        //public void Primal()
+        //{
+        //    Scenario1(_primalContainer);
+        //}
 
         public void Scenario1(EcsContainer container)
         {
