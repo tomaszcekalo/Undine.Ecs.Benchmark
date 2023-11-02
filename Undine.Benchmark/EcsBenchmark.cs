@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
+using Undine.Arch;
 using Undine.Audrey;
 using Undine.Benchmark.Components;
 using Undine.Benchmark.Systems;
@@ -30,6 +31,7 @@ namespace Undine.Benchmark
         private LeopotamEcsLiteContainer _leopotamEcsLiteContainer;
         private MonoGame.Extended.Entities.MGEContainer _MGEEContainer;
         private SimplecsContainer _simpleEcsContainer;
+        private ArchContainer _archContainer;
 
         //private PrimalContainer _primalContainer;
         private int _amountOfEntities = 1024;
@@ -64,6 +66,8 @@ namespace Undine.Benchmark
             _MGEEContainer.Init();
             _simpleEcsContainer = new SimplecsContainer();
             AddSystems(_simpleEcsContainer);
+            _archContainer = new ArchContainer();
+            AddSystems(_archContainer);
             //_primalContainer = new PrimalContainer();
             //AddSystems(_primalContainer);
 
@@ -87,6 +91,8 @@ namespace Undine.Benchmark
                 AddComponents(mgeeEntity);
                 var simplecsEntity = _simpleEcsContainer.CreateNewEntity();
                 AddComponents(simplecsEntity);
+                var archEntity = _archContainer.CreateNewEntity();
+                AddComponents(archEntity);
                 //var primalEntity = _primalContainer.CreateNewEntity();
                 //AddComponents(primalEntity);
             }
@@ -163,6 +169,12 @@ namespace Undine.Benchmark
         public void LeopotamEcsLite()
         {
             Scenario1(_leopotamEcsLiteContainer);
+        }
+
+        [Benchmark]
+        public void Arch()
+        {
+            Scenario1(_archContainer);
         }
 
         //[Benchmark]
