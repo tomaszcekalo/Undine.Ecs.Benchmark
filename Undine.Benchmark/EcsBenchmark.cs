@@ -6,6 +6,7 @@ using Undine.Benchmark.Components;
 using Undine.Benchmark.Systems;
 using Undine.Core;
 using Undine.DefaultEcs;
+using Undine.EcsRx;
 using Undine.Entitas;
 using Undine.LazyECS;
 using Undine.LeopotamEcs;
@@ -32,6 +33,7 @@ namespace Undine.Benchmark
         private MonoGame.Extended.Entities.MGEContainer _MGEEContainer;
         private SimplecsContainer _simpleEcsContainer;
         private ArchContainer _archContainer;
+        private EcsRxContainer _ecsRxContainer;
 
         //private PrimalContainer _primalContainer;
         private int _amountOfEntities = 1024;
@@ -68,6 +70,8 @@ namespace Undine.Benchmark
             AddSystems(_simpleEcsContainer);
             _archContainer = new ArchContainer();
             AddSystems(_archContainer);
+            _ecsRxContainer = new EcsRxContainer();
+            AddSystems(_ecsRxContainer);
             //_primalContainer = new PrimalContainer();
             //AddSystems(_primalContainer);
 
@@ -93,12 +97,14 @@ namespace Undine.Benchmark
                 AddComponents(simplecsEntity);
                 var archEntity = _archContainer.CreateNewEntity();
                 AddComponents(archEntity);
+                var ecsRxEntity = _ecsRxContainer.CreateNewEntity();
+                AddComponents(ecsRxEntity);
                 //var primalEntity = _primalContainer.CreateNewEntity();
                 //AddComponents(primalEntity);
             }
         }
 
-        public void AddSystems(EcsContainer container)
+        public void AddSystems(IEcsContainer container)
         {
             container.AddSystem(new AccelerationSystem());
             container.AddSystem(new SpeedSystem());
@@ -177,13 +183,19 @@ namespace Undine.Benchmark
             Scenario1(_archContainer);
         }
 
+        [Benchmark]
+        public void EcsRx()
+        {
+            Scenario1(_ecsRxContainer);
+        }
+
         //[Benchmark]
         //public void Primal()
         //{
         //    Scenario1(_primalContainer);
         //}
 
-        public void Scenario1(EcsContainer container)
+        public void Scenario1(IEcsContainer container)
         {
             for (int i = 0; i < _amountOfIterations; i++)
             {

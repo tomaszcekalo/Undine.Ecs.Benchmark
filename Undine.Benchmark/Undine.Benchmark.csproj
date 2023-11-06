@@ -13,6 +13,7 @@
     <PackageReference Include="Undine.Arch" Version="0.0.0.1" />
     <PackageReference Include="Undine.Audrey" Version="1.0.2" />
     <PackageReference Include="Undine.DefaultEcs" Version="1.0.3" />
+    <PackageReference Include="Undine.EcsRx" Version="0.0.1" />
     <PackageReference Include="Undine.Entitas" Version="1.0.3" />
     <PackageReference Include="Undine.LazyECS" Version="1.0.5" />
     <PackageReference Include="Undine.LeopotamEcs" Version="0.0.0.6" />
